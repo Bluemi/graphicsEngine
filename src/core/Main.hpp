@@ -5,6 +5,8 @@ class Main
 {
 	public:
 		Main();
+	private:
+		void run();
 };
 
 #endif

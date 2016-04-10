@@ -4,5 +4,9 @@
 
 Main::Main()
 {
-	std::cout << "hello world" << std::endl;
+	std::cout << " --- GraphicsEngine ---" << std::endl;
+}
+
+void Main::run()
+{
 }
