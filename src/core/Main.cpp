@@ -1,6 +1,7 @@
 #include "Main.hpp"
 
 #include <iostream>
+#include <SFML/Window.hpp>
 
 Main::Main()
 {
@@ -21,6 +22,11 @@ void Main::run()
 
 	while (running)
 	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::End))
+		{
+			exit();
+			break;
+		}
 		if (clock.getElapsedTime().asMilliseconds() >= FRAME_RATE)
 		{
 			clock.restart();
@@ -32,7 +38,6 @@ void Main::run()
 
 void Main::tick()
 {
-	
 }
 
 void Main::render()

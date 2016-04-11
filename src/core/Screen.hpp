@@ -3,8 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
-class Screen : public sf::RenderWindow
+class Screen
 {
+	public:
+		Screen();
+	private:
+		sf::RenderWindow* window;
 };
 
 #endif
