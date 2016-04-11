@@ -13,6 +13,7 @@ Main::Main()
 Main::~Main()
 {
 	delete screen;
+	std::cout << " --- END ---" << std::endl;
 }
 
 void Main::run()
