@@ -5,7 +5,13 @@
 Main::Main()
 {
 	std::cout << " --- GraphicsEngine ---" << std::endl;
+	screen = new Screen();
 	run();
+}
+
+Main::~Main()
+{
+	delete screen;
 }
 
 void Main::run()
@@ -19,6 +25,7 @@ void Main::run()
 		{
 			clock.restart();
 			tick();
+			render();
 		}
 	}
 }

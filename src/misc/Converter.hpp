@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#define deleteAndNULL(x) delete x; x = NULL
+
 class Converter
 {
 	public:
