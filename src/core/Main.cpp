@@ -22,7 +22,7 @@ void Main::run()
 
 	while (running)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::End))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::End) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
 			exit();
 			break;
