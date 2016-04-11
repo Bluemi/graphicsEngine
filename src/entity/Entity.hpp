@@ -7,7 +7,7 @@ class Entity
 {
 	public:
 		Entity();
-		virtual Vec3D* getPosition() const = 0;
+		virtual const Vec3D& getPosition() const = 0;
 	protected:
 		virtual void setPosition(const Vec3D&) = 0;
 };

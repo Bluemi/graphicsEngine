@@ -6,6 +6,7 @@ Screen::Screen()
 	backgroundColor = new sf::Color(20,20,30,255);
 	window->clear(*backgroundColor);
 	window->display();
+	window->setMouseCursorVisible(false);
 	window->setVisible(true);
 }
 
