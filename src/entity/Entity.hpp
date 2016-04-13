@@ -9,6 +9,7 @@ class Entity
 {
 	public:
 		Entity();
+		virtual ~Entity();
 
 		virtual const Vec3D& getPosition() const = 0;
 		virtual void render(const Cam&) const = 0;
