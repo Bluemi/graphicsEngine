@@ -3,14 +3,20 @@
 
 #include <SFML/Graphics.hpp>
 
+class Main;
+
 class Screen
 {
 	public:
-		Screen();
+		Screen(Main*);
 		~Screen();
+		void handleEvents() const;
 	private:
+		Main* main;
 		sf::RenderWindow* window;
 		sf::Color* backgroundColor;
 };
+
+#include "Main.hpp"
 
 #endif

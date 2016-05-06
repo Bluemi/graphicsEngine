@@ -3,10 +3,13 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 
+#include "../misc/Debug.hpp"
+
 Main::Main()
 {
 	std::cout << " --- GraphicsEngine ---" << std::endl;
-	screen = new Screen();
+ 	running = true;
+	screen = new Screen(this);
 	run();
 }
 
@@ -28,6 +31,8 @@ void Main::run()
 			exit();
 			break;
 		}
+		Debug::warnIf(screen == NULL, "Main::run(): screen == NULL");
+		screen->handleEvents();
 		if (clock.getElapsedTime().asMilliseconds() >= FRAME_RATE)
 		{
 			clock.restart();
@@ -37,13 +42,20 @@ void Main::run()
 	}
 }
 
+void Main::handleKeyPressEvent(const sf::Event& event) const
+{
+}
+
+void Main::handleKeyReleaseEvent(const sf::Event& event) const
+{
+}
+
 void Main::tick()
 {
 }
 
 void Main::render()
 {
-	
 }
 
 void Main::exit()

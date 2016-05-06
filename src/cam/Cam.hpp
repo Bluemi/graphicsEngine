@@ -15,6 +15,8 @@ class Cam : public Entity
 	private:
 		Vec3D position;
 		Vec3D directionFront;
+		Vec3D directionLeft;
+		Vec3D directionTop;
 };
 
 #endif

@@ -13,6 +13,8 @@ class Entity
 
 		virtual const Vec3D& getPosition() const = 0;
 		virtual void render(const Cam&) const = 0;
+		// virtual std::vector<std::string> getPossibleCommands;
+
 		Point2D* from3Dto2D(const Vec3D&, const Cam&) const;
 	protected:
 		virtual void setPosition(const Vec3D&) = 0;
