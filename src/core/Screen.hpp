@@ -10,6 +10,7 @@ class Screen
 	public:
 		Screen(Main*);
 		~Screen();
+
 		void handleEvents() const;
 	private:
 		Main* main;

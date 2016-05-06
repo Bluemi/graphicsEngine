@@ -9,10 +9,17 @@ class Cam : public Entity
 	public:
 		Cam(const Vec3D&);
 
-		virtual const Vec3D& getPosition() const override;
-		virtual const Vec3D& getFrontDirection() const;
+		const Vec3D& getPosition() const override;
+		const Vec3D& getFrontDirection() const;
+		const Vec3D& getLeftDirection() const;
+		const Vec3D& getTopDirection() const;
+
+		void reactToMouseMove(int, int);
 
 	private:
+		void calcDirections();
+
+		// members
 		Vec3D position;
 		Vec3D directionFront;
 		Vec3D directionLeft;
