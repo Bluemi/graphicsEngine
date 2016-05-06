@@ -10,6 +10,8 @@ class Vec3D
 		float getX() const;
 		float getY() const;
 		float getZ() const;
+
+		bool equal(const Vec3D&);
 	private:
 		float x, y, z;
 };

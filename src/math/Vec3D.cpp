@@ -23,3 +23,7 @@ float Vec3D::getZ() const
 	return z;
 }
 
+bool Vec3D::equal(const Vec3D& vec)
+{
+	return (vec.getX() == getX()) && (vec.getY() == getY()) && (vec.getZ() == getZ()); 
+}

@@ -17,7 +17,7 @@ class Cam : public Entity
 		void reactToMouseMove(int, int);
 
 	private:
-		void calcDirections();
+		void calcLeftDirection();
 
 		// members
 		Vec3D position;
