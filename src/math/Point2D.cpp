@@ -17,3 +17,13 @@ int Point2D::getY() const
 {
 	return y;
 }
+
+void Point2D::setX(int argx)
+{
+	x = argx;
+}
+
+void Point2D::setY(int argy)
+{
+	y = argy;
+}

@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../math/Point2D.hpp"
+
 class Main;
 
 class Screen
@@ -11,11 +13,14 @@ class Screen
 		Screen(Main*);
 		~Screen();
 
+		static const Point2D& getScreenSize();
 		void handleEvents() const;
 	private:
 		Main* main;
 		sf::RenderWindow* window;
 		sf::Color* backgroundColor;
+
+		static Point2D screenSize;
 };
 
 #include "Main.hpp"

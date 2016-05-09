@@ -3,6 +3,9 @@
 #include <SFML/Window.hpp>
 
 #include "../misc/Debug.hpp"
+#include "../misc/Converter.hpp"
+
+extern Point2D Screen::screenSize;
 
 Screen::Screen(Main* m)
 {
@@ -13,6 +16,9 @@ Screen::Screen(Main* m)
 	window->display();
 	window->setMouseCursorVisible(false);
 	window->setVisible(true);
+
+	screenSize.setX(window->getSize().x);
+	screenSize.setY(window->getSize().y);
 }
 
 Screen::~Screen()
@@ -54,4 +60,9 @@ void Screen::handleEvents() const
 			}
 		}
 	}
+}
+
+const Point2D& Screen::getScreenSize()
+{
+	return screenSize;
 }

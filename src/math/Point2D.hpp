@@ -9,6 +9,9 @@ class Point2D
 
 		int getX() const;
 		int getY() const;
+
+		void setX(int);
+		void setY(int);
 	private:
 		int x, y;
 };
