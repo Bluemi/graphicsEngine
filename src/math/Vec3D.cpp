@@ -45,6 +45,10 @@ void Vec3D::setZ(float argz)
 void Vec3D::normalize()
 {
 	float m = getMagnitude();
+	if (m == 0)
+	{
+		return;
+	}
 	setX(getX() / m);
 	setY(getY() / m);
 	setZ(getZ() / m);
