@@ -35,7 +35,7 @@ class Vec3D
 		float x, y, z;
 };
 
-Vec3D* operator+(const Vec3D& vec1, const Vec3D& vec2);
-Vec3D* operator-(const Vec3D& vec1, const Vec3D& vec2);
+Vec3D operator+(const Vec3D& vec1, const Vec3D& vec2);
+Vec3D operator-(const Vec3D& vec1, const Vec3D& vec2);
 
 #endif

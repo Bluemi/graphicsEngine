@@ -87,28 +87,26 @@ Vec3D* Vec3D::vectorProduct(const Vec3D& a, const Vec3D& b)
 
 float Vec3D::getDistance(const Vec3D& vec1, const Vec3D& vec2)
 {
-	Vec3D* vec = vec1 - vec2;
-	float f = vec->getMagnitude();
-	delete vec;
+	Vec3D vec = vec1 - vec2;
+	float f = vec.getMagnitude();
 	return f;
 }
 
 float Vec3D::getDistanceToFlat(const Vec3D& flatPos, const Vec3D& flatNormVec, const Vec3D& point)
 {
-	Vec3D* vec = point - flatPos; // Der Vektor von floatPos zu point
-	Vec3D normalizedFloatNormVec = Vec3D(flatNormVec);
+	Vec3D vec = point - flatPos; // Der Vektor von floatPos zu point
+	Vec3D normalizedFloatNormVec(flatNormVec);
 	normalizedFloatNormVec.normalize();
-	float f = dotProduct(normalizedFloatNormVec, *vec);
-	delete vec;
+	float f = dotProduct(normalizedFloatNormVec, vec);
 	return f;
 }
 
-Vec3D* operator+(const Vec3D& vec1, const Vec3D& vec2)
+Vec3D operator+(const Vec3D& vec1, const Vec3D& vec2)
 {
-	return new Vec3D(vec1.getX() + vec2.getX(), vec1.getY() + vec2.getY(), vec1.getZ() + vec2.getZ());
+	return Vec3D(vec1.getX() + vec2.getX(), vec1.getY() + vec2.getY(), vec1.getZ() + vec2.getZ());
 }
 
-Vec3D* operator-(const Vec3D& vec1, const Vec3D& vec2)
+Vec3D operator-(const Vec3D& vec1, const Vec3D& vec2)
 {
-	return new Vec3D(vec1.getX() - vec2.getX(), vec1.getY() - vec2.getY(), vec1.getZ() - vec2.getZ());
+	return Vec3D(vec1.getX() - vec2.getX(), vec1.getY() - vec2.getY(), vec1.getZ() - vec2.getZ());
 }
