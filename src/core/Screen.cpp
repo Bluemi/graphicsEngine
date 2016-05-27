@@ -5,20 +5,15 @@
 #include "../misc/Debug.hpp"
 #include "../misc/Converter.hpp"
 
-extern Point2D Screen::screenSize;
-
 Screen::Screen(Main* m)
 {
 	main = m;
-	window = new sf::RenderWindow(sf::VideoMode::getFullscreenModes()[0], "GraphicsEngine", sf::Style::Fullscreen);
+	window = new sf::RenderWindow(sf::VideoMode(getScreenSize().getX(), getScreenSize().getY()), "GraphicsEngine", sf::Style::Fullscreen);
 	backgroundColor = new sf::Color(20,20,30,255);
 	window->clear(*backgroundColor);
 	window->display();
 	window->setMouseCursorVisible(false);
 	window->setVisible(true);
-
-	screenSize.setX(window->getSize().x);
-	screenSize.setY(window->getSize().y);
 }
 
 Screen::~Screen()
@@ -64,5 +59,6 @@ void Screen::handleEvents() const
 
 const Point2D& Screen::getScreenSize()
 {
-	return screenSize;
+	static Point2D p(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
+	return p;
 }

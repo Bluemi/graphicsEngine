@@ -19,8 +19,6 @@ class Screen
 		Main* main;
 		sf::RenderWindow* window;
 		sf::Color* backgroundColor;
-
-		static Point2D screenSize;
 };
 
 #include "Main.hpp"
