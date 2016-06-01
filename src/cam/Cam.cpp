@@ -9,7 +9,7 @@ Cam::Cam(const Vec3D& pos)
 	calcLeftDirection();
 }
 
-const Vec3D& Cam::getPosition() const
+Vec3D Cam::getPosition() const
 {
 	return position;
 }

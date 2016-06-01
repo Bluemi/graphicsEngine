@@ -11,7 +11,7 @@ class Entity
 		Entity();
 		virtual ~Entity();
 
-		virtual const Vec3D& getPosition() const = 0;
+		virtual Vec3D getPosition() const = 0;
 		virtual void render(const Cam&) const = 0;
 		// virtual std::vector<std::string> getPossibleCommands;
 

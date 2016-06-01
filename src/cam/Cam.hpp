@@ -10,7 +10,7 @@ class Cam : public Entity
 	public:
 		Cam(const Vec3D&);
 
-		const Vec3D& getPosition() const override;
+		Vec3D getPosition() const override;
 		const Vec3D& getDirectionFront() const;
 		const Vec3D& getDirectionLeft() const;
 		const Vec3D& getDirectionTop() const;
