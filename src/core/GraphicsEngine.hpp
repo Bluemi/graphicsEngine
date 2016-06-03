@@ -10,8 +10,16 @@ class GraphicsEngine
 	public:
 		GraphicsEngine();
 		~GraphicsEngine();
+
+		void render();
 	private:
-		std::vector<Entity> entities;
+		std::vector<Entity*> entities;
+		std::vector<Cam> cams;
+
+		Cam activeCam;
+
+		const Cam& getActiveCam();
+		void initiateEntities();
 };
 
 #endif

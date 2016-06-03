@@ -33,6 +33,5 @@ Point2D Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
 	int x = (int)(Screen::getScreenSize().getX()/2.f) + ((beta*2.f / cam.getXViewRange()) * Screen::getScreenSize().getX()/2.f);
 	int y = (int)(Screen::getScreenSize().getY()/2.f) + ((gamma*2.f / cam.getYViewRange()) * Screen::getScreenSize().getY()/2.f);
 
-	Debug::warn("Entity::from3Dto2D(): TODO");
 	return Point2D(x, y);
 }

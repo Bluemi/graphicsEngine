@@ -16,6 +16,9 @@ class Screen
 		static const Point2D& getScreenSize();
 		void handleEvents() const;
 		void renderShape(const sf::Shape&);
+
+		void display();
+		void clear();
 	private:
 		Main* main;
 		sf::RenderWindow* window;

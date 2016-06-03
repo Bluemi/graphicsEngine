@@ -9,6 +9,7 @@ class Cam : public Entity
 {
 	public:
 		Cam(const Vec3D&);
+		Cam();
 
 		Vec3D getPosition() const override;
 		const Vec3D& getDirectionFront() const;
@@ -19,6 +20,9 @@ class Cam : public Entity
 		float getYViewRange() const;
 
 		void reactToMouseMove(int, int);
+
+		void render(const Cam&) const override;
+		void setPosition(const Vec3D&) override;
 
 	private:
 		void calcLeftDirection();

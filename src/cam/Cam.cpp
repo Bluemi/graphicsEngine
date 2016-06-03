@@ -9,6 +9,12 @@ Cam::Cam(const Vec3D& pos)
 	calcLeftDirection();
 }
 
+Cam::Cam()
+	: position(), directionFront(1.f, 0.f, 0.f), directionLeft(), directionTop(0.f, 0.f, 1.f)
+{
+	calcLeftDirection();
+}
+
 Vec3D Cam::getPosition() const
 {
 	return position;
@@ -50,6 +56,16 @@ float Cam::getYViewRange() const
 void Cam::reactToMouseMove(int x, int y)
 {
 	
+}
+
+void Cam::render(const Cam&) const
+{
+	Debug::warn("Cam::render(): TODO");
+}
+
+void Cam::setPosition(const Vec3D&)
+{
+	Debug::warn("Cam::setPosition(): TODO");
 }
 
 // Berechnet 'directionLeft' aus 'FrontDirection'

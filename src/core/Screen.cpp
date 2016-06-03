@@ -57,6 +57,16 @@ void Screen::handleEvents() const
 	}
 }
 
+void Screen::clear()
+{
+	window->clear(*backgroundColor);
+}
+
+void Screen::display()
+{
+	window->display();
+}
+
 void Screen::renderShape(const sf::Shape& shape)
 {
 	window->draw(shape);

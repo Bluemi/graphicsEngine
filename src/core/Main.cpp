@@ -63,6 +63,9 @@ void Main::tick()
 
 void Main::render()
 {
+	screen->clear();
+	graphicsEngine.render();
+	screen->display();
 }
 
 void Main::exit()

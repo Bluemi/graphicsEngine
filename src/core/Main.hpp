@@ -4,6 +4,7 @@
 #include <SFML/Window.hpp>
 
 #include "Screen.hpp"
+#include "GraphicsEngine.hpp"
 
 class Main
 {
@@ -24,6 +25,7 @@ class Main
 		bool running;
 
 		// members
+		GraphicsEngine graphicsEngine;
 		static Screen* screen;
 		int const FRAME_RATE = 20;
 };
