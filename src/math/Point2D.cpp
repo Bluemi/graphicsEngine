@@ -27,3 +27,8 @@ void Point2D::setY(int argy)
 {
 	y = argy;
 }
+
+sf::Vector2f Point2D::getSFVec() const
+{
+	return sf::Vector2f(getX(), getY());
+}

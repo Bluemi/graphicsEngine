@@ -5,6 +5,8 @@
 
 #include "../misc/Debug.hpp"
 
+Screen* Main::screen;
+
 Main::Main()
 {
 	std::cout << " --- GraphicsEngine ---" << std::endl;
@@ -31,7 +33,7 @@ void Main::run()
 			exit();
 			break;
 		}
-		Debug::warnIf(screen == NULL, "Main::run(): screen == NULL");
+		//Debug::warnIf(screen == NULL, "Main::run(): screen == NULL");
 		screen->handleEvents();
 		if (clock.getElapsedTime().asMilliseconds() >= FRAME_RATE)
 		{
@@ -40,6 +42,11 @@ void Main::run()
 			render();
 		}
 	}
+}
+
+Screen* Main::getScreen()
+{
+	return screen;
 }
 
 void Main::handleKeyPressEvent(const sf::Event& event) const

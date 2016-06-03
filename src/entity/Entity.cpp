@@ -19,7 +19,7 @@ Entity::~Entity()
 	beta		sei der Winkel zwischen Cam.dirFront und viewVec in x-Richtung
 	gamma		sei der Winkel zwischen Cam.dirFront und viewVec in y-Richtung
 */
-Point2D* Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
+Point2D Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
 {
 	float betaDif = Vec3D::getDistanceToFlat(cam.getPosition(), cam.getDirectionLeft(), vec); // Der Abstand von verticalFlat zu vec
 	Vec3D* rotTopDir = cam.getRotDirectionTop();
@@ -34,5 +34,5 @@ Point2D* Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
 	int y = (int)(Screen::getScreenSize().getY()/2.f) + ((gamma*2.f / cam.getYViewRange()) * Screen::getScreenSize().getY()/2.f);
 
 	Debug::warn("Entity::from3Dto2D(): TODO");
-	return new Point2D(x, y);
+	return Point2D(x, y);
 }

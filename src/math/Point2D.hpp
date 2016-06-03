@@ -1,6 +1,8 @@
 #ifndef __POINT2D_CLASS__
 #define __POINT2D_CLASS__
 
+#include <SFML/Graphics.hpp>
+
 class Point2D
 {
 	public:
@@ -12,6 +14,8 @@ class Point2D
 
 		void setX(int);
 		void setY(int);
+
+		sf::Vector2f getSFVec() const;
 	private:
 		int x, y;
 };

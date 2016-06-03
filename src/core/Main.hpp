@@ -12,6 +12,7 @@ class Main
 		~Main();
 		void handleKeyPressEvent(const sf::Event&) const;
 		void handleKeyReleaseEvent(const sf::Event&) const;
+		static Screen* getScreen();
 	private:
 		// functions
 		void run();
@@ -23,7 +24,7 @@ class Main
 		bool running;
 
 		// members
-		Screen* screen;
+		static Screen* screen;
 		int const FRAME_RATE = 20;
 };
 

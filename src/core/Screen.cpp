@@ -57,6 +57,11 @@ void Screen::handleEvents() const
 	}
 }
 
+void Screen::renderShape(const sf::Shape& shape)
+{
+	window->draw(shape);
+}
+
 const Point2D& Screen::getScreenSize()
 {
 	static Point2D p(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);

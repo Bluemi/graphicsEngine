@@ -11,7 +11,7 @@ class Plane : public Entity
 	public:
 		Plane(const Vec3D& p1, const Vec3D& p2, const Vec3D& p3);
 		void render(const Cam& cam) const override;
-		Vec3D* getPosition();
+		Vec3D getPosition();
 	private:
 		Vec3D point1;
 		Vec3D point2;
