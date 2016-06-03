@@ -24,6 +24,7 @@ class Cam : public Entity
 		void render(const Cam&) const override;
 		void setPosition(const Vec3D&) override;
 
+		static const float DEFAULT_VIEW_RANGE_X;
 	private:
 		void calcLeftDirection();
 

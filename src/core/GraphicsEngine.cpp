@@ -17,9 +17,9 @@ GraphicsEngine::~GraphicsEngine()
 void GraphicsEngine::initiateEntities()
 {
 	entities.push_back(new Plane(
-					Vec3D(3.f, -3.f, 3.f),
-					Vec3D(3.f, 0.f, 3.f),
-					Vec3D(3.f, -3.f, 1.f)));
+					Vec3D(2.f, 0.f, 0.f),
+					Vec3D(3.f, 1.f, 3.f),
+					Vec3D(3.f, -1.f, 1.f)));
 }
 
 void GraphicsEngine::render()

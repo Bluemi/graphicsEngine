@@ -3,14 +3,16 @@
 #include "../misc/Debug.hpp"
 #include "../core/Screen.hpp"
 
+const float Cam::DEFAULT_VIEW_RANGE_X = 0.52f;
+
 Cam::Cam(const Vec3D& pos)
-	: position(pos), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(30.f)
+	: position(pos), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(DEFAULT_VIEW_RANGE_X)
 {
 	calcLeftDirection();
 }
 
 Cam::Cam()
-	: position(), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(30.f)
+	: position(), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(DEFAULT_VIEW_RANGE_X)
 {
 	calcLeftDirection();
 }

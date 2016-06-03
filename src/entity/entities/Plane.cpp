@@ -24,7 +24,7 @@ void Plane::render(const Cam& cam) const
 	convex.setPoint(1, p2.getSFVec());
 	convex.setPoint(2, p3.getSFVec());
 
-	convex.setFillColor(sf::Color(100,100,100));
+	convex.setFillColor(sf::Color(200,200,200));
 
 	Main::getScreen()->renderShape(convex);
 }
