@@ -42,6 +42,13 @@ void Vec3D::setZ(float argz)
 	z = argz;
 }
 
+void Vec3D::set(const Vec3D& v)
+{
+	setX(v.getX());
+	setY(v.getY());
+	setZ(v.getZ());
+}
+
 void Vec3D::normalize()
 {
 	float m = getMagnitude();
@@ -59,7 +66,7 @@ float Vec3D::getMagnitude() const
 	return (float)sqrt(getX() * getX() + getY() * getY() + getZ() * getZ());
 }
 
-std::string Vec3D::getString() const
+std::string Vec3D::toString() const
 {
 	return "(" + Converter::floatToString(getX()) + "|" + Converter::floatToString(getY()) + "|" + Converter::floatToString(getZ()) + ")";
 }
@@ -76,12 +83,12 @@ float Vec3D::dotProduct(const Vec3D& vec1, const Vec3D& vec2)
 		vec1.getZ() * vec2.getZ();
 }
 
-Vec3D* Vec3D::vectorProduct(const Vec3D& a, const Vec3D& b)
+Vec3D Vec3D::vectorProduct(const Vec3D& a, const Vec3D& b)
 {
-	Vec3D* vec = new Vec3D();
-	vec->setX(a.getY() * b.getZ() - a.getZ() * b.getY());
-	vec->setY(a.getZ() * b.getX() - a.getX() * b.getZ());
-	vec->setZ(a.getX() * b.getY() - a.getY() * b.getX());
+	Vec3D vec;
+	vec.setX(a.getY() * b.getZ() - a.getZ() * b.getY());
+	vec.setY(a.getZ() * b.getX() - a.getX() * b.getZ());
+	vec.setZ(a.getX() * b.getY() - a.getY() * b.getX());
 	return vec;
 }
 

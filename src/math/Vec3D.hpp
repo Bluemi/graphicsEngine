@@ -19,15 +19,17 @@ class Vec3D
 		void setY(float);
 		void setZ(float);
 
+		void set(const Vec3D&);
+
 		// actions
 		void normalize();
 
 		// info
 		float getMagnitude() const;
-		std::string getString() const;
+		std::string toString() const;
 		static float getDistanceToFlat(const Vec3D&, const Vec3D&, const Vec3D&);
 		static float dotProduct(const Vec3D& vec1, const Vec3D& vec2);
-		static Vec3D* vectorProduct(const Vec3D& vec1, const Vec3D& vec2);
+		static Vec3D vectorProduct(const Vec3D& vec1, const Vec3D& vec2);
 		static float getDistance(const Vec3D&, const Vec3D&);
 
 		bool equal(const Vec3D&);

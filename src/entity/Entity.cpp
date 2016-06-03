@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "../misc/Debug.hpp"
+#include "../misc/Converter.hpp"
 #include "../core/Screen.hpp"
 
 Entity::Entity()
@@ -22,16 +23,18 @@ Entity::~Entity()
 Point2D Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
 {
 	float betaDif = Vec3D::getDistanceToFlat(cam.getPosition(), cam.getDirectionLeft(), vec); // Der Abstand von verticalFlat zu vec
-	Vec3D* rotTopDir = cam.getRotDirectionTop();
-	float gammaDif = Vec3D::getDistanceToFlat(cam.getPosition(), *rotTopDir, vec); // Der Abstand von horizontalFlat zu vec
-	delete rotTopDir;
+	Vec3D rotTopDir = cam.getRotDirectionTop();
+	float gammaDif = Vec3D::getDistanceToFlat(cam.getPosition(), rotTopDir, vec); // Der Abstand von horizontalFlat zu vec
 	float distanceToPoint = Vec3D::getDistance(cam.getPosition(), vec);
 
 	float beta = asin(betaDif/distanceToPoint);
 	float gamma = asin(gammaDif/distanceToPoint);
 
-	int x = (int)(Screen::getScreenSize().getX()/2.f) + ((beta*2.f / cam.getXViewRange()) * Screen::getScreenSize().getX()/2.f);
-	int y = (int)(Screen::getScreenSize().getY()/2.f) + ((gamma*2.f / cam.getYViewRange()) * Screen::getScreenSize().getY()/2.f);
+	float ssx = Screen::getScreenSize().getX();
+	float ssy = Screen::getScreenSize().getY();
+
+	int x = (int)(ssx/2.f) + ((beta / cam.getXViewRange()) * ssx);
+	int y = (int)(ssy/2.f) + ((gamma / cam.getYViewRange()) * ssy);
 
 	return Point2D(x, y);
 }

@@ -15,7 +15,7 @@ class Cam : public Entity
 		const Vec3D& getDirectionFront() const;
 		const Vec3D& getDirectionLeft() const;
 		const Vec3D& getDirectionTop() const;
-		Vec3D* getRotDirectionTop() const;
+		Vec3D getRotDirectionTop() const;
 		float getXViewRange() const;
 		float getYViewRange() const;
 

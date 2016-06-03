@@ -1,5 +1,7 @@
 #include "Point2D.hpp"
 
+#include "../misc/Converter.hpp"
+
 Point2D::Point2D(int ax, int ay)
 	: x(ax), y(ay)
 {}
@@ -31,4 +33,9 @@ void Point2D::setY(int argy)
 sf::Vector2f Point2D::getSFVec() const
 {
 	return sf::Vector2f(getX(), getY());
+}
+
+std::string Point2D::toString() const
+{
+	return "Point2D: [ " + Converter::intToString(getX()) + " , " + Converter::intToString(getY()) + " ]";
 }

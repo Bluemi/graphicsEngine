@@ -4,13 +4,13 @@
 #include "../core/Screen.hpp"
 
 Cam::Cam(const Vec3D& pos)
-	: position(pos), directionFront(1.f, 0.f, 0.f), directionLeft(), directionTop(0.f, 0.f, 1.f)
+	: position(pos), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(30.f)
 {
 	calcLeftDirection();
 }
 
 Cam::Cam()
-	: position(), directionFront(1.f, 0.f, 0.f), directionLeft(), directionTop(0.f, 0.f, 1.f)
+	: position(), directionFront(1.f, 0.f, 0.f), directionTop(0.f, 0.f, 1.f), tele(30.f)
 {
 	calcLeftDirection();
 }
@@ -36,10 +36,10 @@ const Vec3D& Cam::getDirectionTop() const
 	return directionTop;
 }
 
-Vec3D* Cam::getRotDirectionTop() const
+Vec3D Cam::getRotDirectionTop() const
 {
-	Vec3D* vec = Vec3D::vectorProduct(getDirectionFront(), getDirectionLeft());
-	vec->normalize();
+	Vec3D vec = Vec3D::vectorProduct(getDirectionFront(), getDirectionLeft());
+	vec.normalize();
 	return vec;
 }
 
@@ -71,6 +71,5 @@ void Cam::setPosition(const Vec3D&)
 // Berechnet 'directionLeft' aus 'FrontDirection'
 void Cam::calcLeftDirection()
 {
-	//Vec3D* vec = Vec3D::getCrossProduct
-	// TODO
+	directionLeft.set(Vec3D::vectorProduct(getDirectionTop(), getDirectionFront()));
 }
