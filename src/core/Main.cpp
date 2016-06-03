@@ -49,11 +49,12 @@ Screen* Main::getScreen()
 	return screen;
 }
 
-void Main::handleKeyPressEvent(const sf::Event& event) const
+void Main::handleKeyPressEvent(const sf::Event& event)
 {
+	graphicsEngine.handleKeyPressEvent(event);
 }
 
-void Main::handleKeyReleaseEvent(const sf::Event& event) const
+void Main::handleKeyReleaseEvent(const sf::Event& event)
 {
 }
 

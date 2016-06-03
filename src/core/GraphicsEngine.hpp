@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <SFML/Window.hpp>
+
 #include "../entity/Entity.hpp"
 
 class GraphicsEngine
@@ -12,6 +14,7 @@ class GraphicsEngine
 		~GraphicsEngine();
 
 		void render();
+		void handleKeyPressEvent(const sf::Event&);
 	private:
 		std::vector<Entity*> entities;
 		std::vector<Cam> cams;

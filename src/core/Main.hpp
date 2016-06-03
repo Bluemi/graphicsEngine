@@ -11,8 +11,8 @@ class Main
 	public:
 		Main();
 		~Main();
-		void handleKeyPressEvent(const sf::Event&) const;
-		void handleKeyReleaseEvent(const sf::Event&) const;
+		void handleKeyPressEvent(const sf::Event&);
+		void handleKeyReleaseEvent(const sf::Event&);
 		static Screen* getScreen();
 	private:
 		// functions
@@ -20,7 +20,7 @@ class Main
 		void exit();
 		void tick();
 		void render();
-		void handleEvents() const;
+		void handleEvents();
 
 		bool running;
 
