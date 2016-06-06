@@ -168,12 +168,12 @@ void Cam::updateSpeed()
 	{
 		if (isMovingLeft)
 		{
-			tmpLeft.scaleWith(-acceleration);
+			tmpLeft.scaleWith(-acceleration/2.f);
 			speed.addWith(tmpLeft);
 		}
 		if (isMovingRight)
 		{
-			tmpLeft.scaleWith(acceleration);
+			tmpLeft.scaleWith(acceleration/2.f);
 			speed.addWith(tmpLeft);
 		}
 	}
@@ -181,12 +181,12 @@ void Cam::updateSpeed()
 	{
 		if (isMovingUp)
 		{
-			tmpUp.scaleWith(acceleration);
+			tmpUp.scaleWith(acceleration/2.f);
 			speed.addWith(tmpUp);
 		}
 		if (isMovingDown)
 		{
-			tmpUp.scaleWith(-acceleration);
+			tmpUp.scaleWith(-acceleration/2.f);
 			speed.addWith(tmpUp);
 		}
 	}
