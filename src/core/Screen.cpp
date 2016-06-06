@@ -5,7 +5,10 @@
 #include "../misc/Debug.hpp"
 #include "../misc/Converter.hpp"
 
+const sf::Vector2i Screen::standartMousePosition(500, 500);
+
 Screen::Screen(Main* m)
+	: hasToKeepMousePosition(true)
 {
 	main = m;
 	window = new sf::RenderWindow(sf::VideoMode(getScreenSize().getX(), getScreenSize().getY()), "GraphicsEngine", sf::Style::Fullscreen);
@@ -14,6 +17,7 @@ Screen::Screen(Main* m)
 	window->display();
 	window->setMouseCursorVisible(false);
 	window->setVisible(true);
+	sf::Mouse::setPosition(standartMousePosition);
 }
 
 Screen::~Screen()
@@ -48,6 +52,19 @@ void Screen::handleEvents() const
 				main->handleKeyReleaseEvent(event);
 				break;
 			}
+			case sf::Event::MouseMoved:
+			{
+				if (hasToKeepMousePosition)
+				{
+					main->handleMouseMoveEvent(event);
+					keepMousePosition();
+				}
+				else
+				{
+					main->handleMouseMoveEvent(event);
+				}
+				break;
+			}
 			default:
 			{
 				//Debug::warn("Screen::handleEvents(): other Event triggered");
@@ -76,4 +93,18 @@ const Point2D& Screen::getScreenSize()
 {
 	static Point2D p(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
 	return p;
+}
+
+void Screen::setHasToKeepMousePosition(bool k)
+{
+	hasToKeepMousePosition = k;
+}
+
+void Screen::keepMousePosition() const
+{
+	// Maus nur bewegen, wenn sie nicht schon auf der richtigen Position ist (sonst endlosschleife ;)
+	if (!((sf::Mouse::getPosition().x == standartMousePosition.x) && sf::Mouse::getPosition().y == standartMousePosition.y))
+	{
+		sf::Mouse::setPosition(standartMousePosition);
+	}
 }

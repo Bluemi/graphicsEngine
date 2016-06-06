@@ -27,11 +27,13 @@ class Cam : public Entity
 		void reactToMouseMove(int, int);
 		void handleKeyPressEvent(const sf::Event&);
 		void handleKeyReleaseEvent(const sf::Event&);
+		void handleMouseMoveEvent(const Point2D&);
 
 		void render(const Cam&) const override;
 		void tick();
 		void setPosition(const Vec3D&) override;
 
+		static const float DEFAULT_ROTATION_SPEED;
 		static const float DEFAULT_VIEW_RANGE_X;
 		static const float DEFAULT_DRAG;
 		static const float DEFAULT_ACCELERATION;
@@ -54,6 +56,7 @@ class Cam : public Entity
 		bool isMovingFront = false;
 		bool isMovingBack = false;
 		bool isMovingFast = false; // shift is pressed
+		bool isFocusingPoint = false;
 
 		// ViewRange
 		float tele;

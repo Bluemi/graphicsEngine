@@ -3,6 +3,7 @@
 #include "../misc/Debug.hpp"
 #include "../core/Screen.hpp"
 
+const float Cam::DEFAULT_ROTATION_SPEED = 0.001f;
 const float Cam::DEFAULT_VIEW_RANGE_X = 0.52f;
 const float Cam::DEFAULT_DRAG = 0.98f;
 const float Cam::DEFAULT_ACCELERATION = 0.2f;
@@ -62,44 +63,31 @@ void Cam::handleKeyPressEvent(const sf::Event& event)
 	switch (event.key.code)
 	{
 		case sf::Keyboard::W:
-		{
 			isMovingFront = true;
 			break;
-		}
 		case sf::Keyboard::A:
-		{
 			isMovingLeft = true;
 			break;
-		}
 		case sf::Keyboard::S:
-		{
 			isMovingBack = true;
 			break;
-		}
 		case sf::Keyboard::D:
-		{
 			isMovingRight = true;
 			break;
-		}
 		case sf::Keyboard::Space:
-		{
 			isMovingUp = true;
 			break;
-		}
 		case sf::Keyboard::LControl:
-		{
 			isMovingDown = true;
 			break;
-		}
 		case sf::Keyboard::LShift:
-		{
 			isMovingFast = true;
 			break;
-		}
+		case sf::Keyboard::E:
+			isFocusingPoint = true;
+			break;
 		default:
-		{
 			Debug::warn("Cam::handleKeyPressEvent(): Unknown KeyPressEvent");
-		}
 	}
 }
 
@@ -108,50 +96,42 @@ void Cam::handleKeyReleaseEvent(const sf::Event& event)
 	switch (event.key.code)
 	{
 		case sf::Keyboard::W:
-		{
 			isMovingFront = false;
 			break;
-		}
 		case sf::Keyboard::S:
-		{
 			isMovingBack = false;
 			break;
-		}
 		case sf::Keyboard::A:
-		{
 			isMovingLeft = false;
 			break;
-		}
 		case sf::Keyboard::D:
-		{
 			isMovingRight = false;
 			break;
-		}
 		case sf::Keyboard::Space:
-		{
 			isMovingUp = false;
 			break;
-		}
 		case sf::Keyboard::LControl:
-		{
 			isMovingDown = false;
 			break;
-		}
 		case sf::Keyboard::LShift:
-		{
 			isMovingFast = false;
 			break;
-		}
+		case sf::Keyboard::E:
+			isFocusingPoint = false;
+			break;
 		default:
-		{
 			Debug::warn("Cam::handleKeyReleaseEvent(): Unknown KeyReleaseEvent");
-		}
 	}
 }
 
-void Cam::reactToMouseMove(int x, int y)
+void Cam::handleMouseMoveEvent(const Point2D& mouseMove)
 {
-	Debug::warn("Cam::reactToMouseMove(): TODO");
+	float mouseXMove = (float)(mouseMove.getX() * DEFAULT_ROTATION_SPEED);
+	float mouseYMove = (float)(mouseMove.getY() * DEFAULT_ROTATION_SPEED);
+	directionFront.rotateZ(mouseXMove);
+	directionFront.rotateUpDown(mouseYMove);
+	directionFront.normalize();
+	calcLeftDirection();
 }
 
 void Cam::updateSpeed()
@@ -217,6 +197,12 @@ void Cam::tick()
 	updateSpeed();
 	position.addWith(speed);
 	speed.scaleWith(DEFAULT_DRAG);
+	if (isFocusingPoint)
+	{
+		directionFront.set(Vec3D() - getPosition());
+		directionFront.normalize();
+		calcLeftDirection();
+	}
 }
 
 void Cam::render(const Cam&) const

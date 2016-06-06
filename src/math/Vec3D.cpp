@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "../misc/Converter.hpp"
+#include "../misc/Debug.hpp"
 
 Vec3D::Vec3D(float x, float y, float z)
 	: x(x), y(y), z(z)
@@ -49,6 +50,7 @@ void Vec3D::set(const Vec3D& v)
 	setZ(v.getZ());
 }
 
+// actions
 void Vec3D::normalize()
 {
 	float m = getMagnitude();
@@ -59,6 +61,56 @@ void Vec3D::normalize()
 	setX(getX() / m);
 	setY(getY() / m);
 	setZ(getZ() / m);
+}
+// Rotation
+void Vec3D::rotateX(float a)
+{
+	float yBackup = getY();
+	float zBackup = getZ();
+	setY(yBackup*cos(a) - zBackup*sin(a));
+	setZ(yBackup*sin(a) + zBackup*cos(a));
+}
+
+void Vec3D::rotateY(float a)
+{
+	double xBackup = getX();
+	double zBackup = getZ();
+	setX(xBackup * cos(a) + zBackup * sin(a));
+	setZ(xBackup * -sin(a) + zBackup * cos(a));
+}
+
+void Vec3D::rotateZ(float a)
+{
+	double xBackup = getX();
+	double yBackup = getY();
+	setX(xBackup*cos(a) - yBackup*sin(a));
+	setY(xBackup*sin(a) + yBackup*cos(a));
+}
+
+void Vec3D::rotateUpDown(float a)
+{
+	Vec3D around = Vec3D::vectorProduct(*this, Vec3D(0,0,1));
+	rotateAround(a, around);
+}
+
+// Lässt den Vektor this um die Ursprungsgrade mit dem Übergebenen Richtungsvektor rotieren
+void Vec3D::rotateAround(float a, const Vec3D& vec)
+{
+	float xBackup = getX();
+	float yBackup = getY();
+	float zBackup = getZ();
+	setX((xBackup * (vec.getX() * vec.getX() * (1 - cos(a)) + cos(a))) + /**/ 
+		(yBackup * (vec.getX() * vec.getY() * (1 - cos(a)) - vec.getZ() * sin(a))) + /**/ 
+		(zBackup * (vec.getX() * vec.getZ() * (1 - cos(a)) + vec.getY() * sin(a))));
+
+	setY((xBackup * (vec.getY() * vec.getX() * (1 - cos(a)) + vec.getZ() * sin(a))) + /**/ 
+		(yBackup * (vec.getY() * vec.getY() * (1 - cos(a)) + cos(a))) + /**/ 
+		(zBackup * (vec.getY() * vec.getZ() * (1 - cos(a)) - vec.getX() * sin(a))));
+
+	setZ((xBackup * (vec.getZ() * vec.getX() * (1 - cos(a)) - vec.getY() * sin(a))) + /**/
+		(yBackup * (vec.getZ() * vec.getY() * (1 - cos(a)) + vec.getX() * sin(a))) + /**/
+		(zBackup * (vec.getZ() * vec.getZ() * (1 - cos(a)) + cos(a))));
+	
 }
 
 void Vec3D::addWith(const Vec3D& vec)

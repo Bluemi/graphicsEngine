@@ -2,6 +2,7 @@
 
 #include "../misc/Debug.hpp"
 #include "../entity/entities/Plane.hpp"
+#include "../core/Screen.hpp"
 
 GraphicsEngine::GraphicsEngine()
 {
@@ -28,6 +29,12 @@ void GraphicsEngine::handleKeyReleaseEvent(const sf::Event& event)
 	{
 		activeCam.handleKeyReleaseEvent(event);
 	}
+}
+
+void GraphicsEngine::handleMouseMoveEvent(const sf::Event& event)
+{
+	// Umrechnen von event -> Point2D
+	activeCam.handleMouseMoveEvent(Point2D(event.mouseMove.x - Screen::standartMousePosition.x, -(event.mouseMove.y - Screen::standartMousePosition.y)));
 }
 
 bool GraphicsEngine::isCamKeyEvent(const sf::Event& event) const
@@ -59,6 +66,10 @@ bool GraphicsEngine::isCamKeyEvent(const sf::Event& event) const
 			return true;
 		}
 		case sf::Keyboard::LShift:
+		{
+			return true;
+		}
+		case sf::Keyboard::E:
 		{
 			return true;
 		}

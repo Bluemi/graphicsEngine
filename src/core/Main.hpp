@@ -13,6 +13,7 @@ class Main
 		~Main();
 		void handleKeyPressEvent(const sf::Event&);
 		void handleKeyReleaseEvent(const sf::Event&);
+		void handleMouseMoveEvent(const sf::Event&);
 		static Screen* getScreen();
 	private:
 		// functions

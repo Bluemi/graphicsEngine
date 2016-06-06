@@ -59,6 +59,11 @@ void Main::handleKeyReleaseEvent(const sf::Event& event)
 	graphicsEngine.handleKeyReleaseEvent(event);
 }
 
+void Main::handleMouseMoveEvent(const sf::Event& event)
+{
+	graphicsEngine.handleMouseMoveEvent(event);
+}
+
 void Main::tick()
 {
 	graphicsEngine.tick();

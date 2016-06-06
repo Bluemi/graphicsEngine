@@ -17,6 +17,7 @@ class GraphicsEngine
 		void tick();
 		void handleKeyPressEvent(const sf::Event&);
 		void handleKeyReleaseEvent(const sf::Event&);
+		void handleMouseMoveEvent(const sf::Event&);
 	private:
 		std::vector<Entity*> entities;
 		std::vector<Cam> cams;

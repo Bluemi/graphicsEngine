@@ -23,6 +23,11 @@ class Vec3D
 
 		// actions
 		void normalize();
+		void rotateX(float a);
+		void rotateY(float a);
+		void rotateZ(float a);
+		void rotateUpDown(float a);
+		void rotateAround(float a, const Vec3D& vec); // Lässt den Vektor this um die Ursprungsgrade mit dem Übergebenen Richtungsvektor rotieren
 
 		// calc
 		void addWith(const Vec3D&);
@@ -37,9 +42,9 @@ class Vec3D
 		static float getDistance(const Vec3D&, const Vec3D&);
 
 		bool equal(const Vec3D&);
-	private:
-		float x, y, z;
-};
+		private:
+			float x, y, z;
+	};
 
 Vec3D operator+(const Vec3D& vec1, const Vec3D& vec2);
 Vec3D operator-(const Vec3D& vec1, const Vec3D& vec2);
