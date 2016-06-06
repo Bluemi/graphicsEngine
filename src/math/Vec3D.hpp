@@ -24,6 +24,10 @@ class Vec3D
 		// actions
 		void normalize();
 
+		// calc
+		void addWith(const Vec3D&);
+		void scaleWith(const float);
+
 		// info
 		float getMagnitude() const;
 		std::string toString() const;

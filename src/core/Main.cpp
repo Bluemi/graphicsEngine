@@ -56,10 +56,12 @@ void Main::handleKeyPressEvent(const sf::Event& event)
 
 void Main::handleKeyReleaseEvent(const sf::Event& event)
 {
+	graphicsEngine.handleKeyReleaseEvent(event);
 }
 
 void Main::tick()
 {
+	graphicsEngine.tick();
 }
 
 void Main::render()

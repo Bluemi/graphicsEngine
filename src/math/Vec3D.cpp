@@ -61,6 +61,20 @@ void Vec3D::normalize()
 	setZ(getZ() / m);
 }
 
+void Vec3D::addWith(const Vec3D& vec)
+{
+	x += vec.getX();
+	y += vec.getY();
+	z += vec.getZ();
+}
+
+void Vec3D::scaleWith(const float f)
+{
+	x *= f;
+	y *= f;
+	z *= f;
+}
+
 float Vec3D::getMagnitude() const
 {
 	return (float)sqrt(getX() * getX() + getY() * getY() + getZ() * getZ());

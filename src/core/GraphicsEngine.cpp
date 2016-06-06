@@ -16,6 +16,57 @@ GraphicsEngine::~GraphicsEngine()
 
 void GraphicsEngine::handleKeyPressEvent(const sf::Event& event)
 {
+	if (isCamKeyEvent(event))
+	{
+		activeCam.handleKeyPressEvent(event);
+	}
+}
+
+void GraphicsEngine::handleKeyReleaseEvent(const sf::Event& event)
+{
+	if (isCamKeyEvent(event))
+	{
+		activeCam.handleKeyReleaseEvent(event);
+	}
+}
+
+bool GraphicsEngine::isCamKeyEvent(const sf::Event& event) const
+{
+	switch (event.key.code)
+	{
+		case sf::Keyboard::W:
+		{
+			return true;
+		}
+		case sf::Keyboard::A:
+		{
+			return true;
+		}
+		case sf::Keyboard::S:
+		{
+			return true;
+		}
+		case sf::Keyboard::D:
+		{
+			return true;
+		}
+		case sf::Keyboard::Space:
+		{
+			return true;
+		}
+		case sf::Keyboard::LControl:
+		{
+			return true;
+		}
+		case sf::Keyboard::LShift:
+		{
+			return true;
+		}
+		default:
+		{
+			return false;
+		}
+	}
 }
 
 void GraphicsEngine::render()
@@ -24,6 +75,16 @@ void GraphicsEngine::render()
 	{
 		entities[i]->render(getActiveCam());
 	}
+}
+
+void GraphicsEngine::tick()
+{
+	/*
+	for (unsigned int i = 0; i < entities.size(); i++)
+	{
+		entities[i]->tick();
+	}*/
+	activeCam.tick();
 }
 
 void GraphicsEngine::initiateEntities()
