@@ -1,6 +1,6 @@
 bin/
 exe
+log
 
 /bam/build
 /.bam/
-bam.lua
