@@ -1,2 +1,6 @@
 bin/
 exe
+
+/bam/build
+/.bam/
+bam.lua
