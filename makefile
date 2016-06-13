@@ -1,8 +1,6 @@
 compile:
 	@bam
-no_compile_run:
-	@./bam/build/debug/graphicsEngine | tee log
-run: compile
+run:
 	@./bam/build/debug/graphicsEngine | tee log
 getlog:
 	@if [ -f log ]; then cat log; else echo "no log file"; fi
