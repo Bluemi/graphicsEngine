@@ -42,37 +42,14 @@ bool GraphicsEngine::isCamKeyEvent(const sf::Event& event) const
 	switch (event.key.code)
 	{
 		case sf::Keyboard::W:
-		{
-			return true;
-		}
 		case sf::Keyboard::A:
-		{
-			return true;
-		}
 		case sf::Keyboard::S:
-		{
-			return true;
-		}
 		case sf::Keyboard::D:
-		{
-			return true;
-		}
 		case sf::Keyboard::Space:
-		{
-			return true;
-		}
 		case sf::Keyboard::LControl:
-		{
-			return true;
-		}
 		case sf::Keyboard::LShift:
-		{
-			return true;
-		}
 		case sf::Keyboard::E:
-		{
 			return true;
-		}
 		default:
 		{
 			return false;
