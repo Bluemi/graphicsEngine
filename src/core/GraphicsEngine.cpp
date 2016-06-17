@@ -1,5 +1,7 @@
 #include "GraphicsEngine.hpp"
 
+#include <functional>
+
 #include "../misc/Debug.hpp"
 #include "../entity/entities/Plane.hpp"
 #include "../core/Screen.hpp"
@@ -13,7 +15,12 @@ GraphicsEngine::GraphicsEngine()
 }
 
 GraphicsEngine::~GraphicsEngine()
-{}
+{
+	for (Entity* e : entities)
+	{
+		delete e;
+	}
+}
 
 void GraphicsEngine::handleKeyPressEvent(const sf::Event& event)
 {
@@ -59,6 +66,22 @@ bool GraphicsEngine::isCamKeyEvent(const sf::Event& event) const
 
 void GraphicsEngine::render()
 {
+	for (Entity* e : entities)
+	{
+		e->calculateDistanceToCam(getActiveCam());
+	}
+
+	std::sort(entities.begin(), entities.end(), distanceComp);
+
+/*
+	Debug::test("\nPostSort");
+
+	for (Entity* e : entities)
+	{
+		Debug::test("\t" + e->toString());
+	}
+*/
+
 	for (unsigned int i = 0; i < entities.size(); i++)
 	{
 		entities[i]->render(getActiveCam());
@@ -71,8 +94,12 @@ void GraphicsEngine::tick()
 	for (unsigned int i = 0; i < entities.size(); i++)
 	{
 		entities[i]->tick();
-	}*/
+	}
+	*/
 	activeCam.tick();
+
+	// sort entities
+	
 }
 
 void GraphicsEngine::initiateEntities()
@@ -80,27 +107,33 @@ void GraphicsEngine::initiateEntities()
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 0.f),
 					Vec3D(0.f, 0.f, 1.f),
-					Vec3D(0.f, 1.f, 1.f)));
+					Vec3D(0.f, 1.f, 1.f),
+					sf::Color(100, 100, 100)));
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 0.f),
 					Vec3D(0.f, 1.f, 0.f),
-					Vec3D(0.f, 1.f, 1.f)));
+					Vec3D(0.f, 1.f, 1.f),
+					sf::Color(100, 100, 100)));
 	entities.push_back(new Plane(
 					Vec3D(1.f, 0.f, 0.f),
 					Vec3D(1.f, 0.f, 1.f),
-					Vec3D(1.f, 1.f, 1.f)));
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(200, 200, 200)));
 	entities.push_back(new Plane(
 					Vec3D(1.f, 0.f, 0.f),
 					Vec3D(1.f, 1.f, 0.f),
-					Vec3D(1.f, 1.f, 1.f)));
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(200, 200, 200)));
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 1.f),
 					Vec3D(1.f, 0.f, 1.f),
-					Vec3D(1.f, 1.f, 1.f)));
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(130, 130, 130)));
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 1.f),
 					Vec3D(0.f, 1.f, 1.f),
-					Vec3D(1.f, 1.f, 1.f)));
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(130, 130, 130)));
 }
 
 const Cam& GraphicsEngine::getActiveCam()

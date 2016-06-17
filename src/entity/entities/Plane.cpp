@@ -1,13 +1,11 @@
 #include "Plane.hpp"
 
-#include <SFML/Graphics.hpp>
-
 #include "../../misc/Debug.hpp"
 #include "../../math/Point2D.hpp"
 #include "../../core/Main.hpp"
 
-Plane::Plane(const Vec3D& p1, const Vec3D& p2, const Vec3D& p3)
-	: point1(p1), point2(p2), point3(p3)
+Plane::Plane(const Vec3D& p1, const Vec3D& p2, const Vec3D& p3, const sf::Color c)
+	: point1(p1), point2(p2), point3(p3), color(c)
 {}
 
 void Plane::render(const Cam& cam) const
@@ -24,15 +22,16 @@ void Plane::render(const Cam& cam) const
 	convex.setPoint(1, p2.getSFVec());
 	convex.setPoint(2, p3.getSFVec());
 
-	convex.setFillColor(sf::Color(200,200,200));
+	convex.setFillColor(color);
 
 	Main::getScreen()->renderShape(convex);
 }
 
 Vec3D Plane::getPosition() const
 {
-	Debug::warn("Plane::getPosition(): TODO");
-	return Vec3D();
+	return Vec3D(	point1.getX() + point2.getX() + point3.getX(),
+			point1.getY() + point2.getY() + point3.getY(),
+			point1.getZ() + point2.getZ() + point3.getZ());
 }
 
 void Plane::setPosition(const Vec3D&)

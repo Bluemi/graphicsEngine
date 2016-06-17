@@ -1,7 +1,6 @@
 #include "Debug.hpp"
 
 #include "Converter.hpp"
-#include "../core/Main.hpp"
 
 void Debug::init()
 {}
@@ -56,7 +55,6 @@ void Debug::warnIf(bool b, const std::string& s)
 void Debug::error(const std::string& s)
 {
 	std::cout << ERROR_COLOR << "ERROR: " << s << RESET_COLOR << std::endl;
-	//Main::exit();
 }
 
 void Debug::errorIf(bool b, const std::string& s)

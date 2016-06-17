@@ -38,3 +38,20 @@ Point2D Entity::from3Dto2D(const Vec3D& vec, const Cam& cam) const
 
 	return Point2D(x, y);
 }
+
+float Entity::getDistanceToCam() const { return distanceToCam; }
+
+std::string Entity::toString() const
+{
+	return "[distanceToCam=" + Converter::floatToString(distanceToCam) + "]";
+}
+
+void Entity::calculateDistanceToCam(const Cam& cam)
+{
+	distanceToCam = (cam.getPosition() - getPosition()).getMagnitude();
+}
+
+bool distanceComp(Entity* e1, Entity* e2)
+{
+	return e1->getDistanceToCam() > e2->getDistanceToCam();
+}
