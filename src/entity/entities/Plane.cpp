@@ -29,9 +29,9 @@ void Plane::render(const Cam& cam) const
 
 Vec3D Plane::getPosition() const
 {
-	return Vec3D(	point1.getX() + point2.getX() + point3.getX(),
-			point1.getY() + point2.getY() + point3.getY(),
-			point1.getZ() + point2.getZ() + point3.getZ());
+	return Vec3D(	(point1.getX() + point2.getX() + point3.getX())/3.f,
+			(point1.getY() + point2.getY() + point3.getY())/3.f,
+			(point1.getZ() + point2.getZ() + point3.getZ())/3.f);
 }
 
 void Plane::setPosition(const Vec3D&)
