@@ -104,6 +104,7 @@ void GraphicsEngine::tick()
 
 void GraphicsEngine::initiateEntities()
 {
+	// Cube1
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 0.f),
 					Vec3D(0.f, 1.f, 0.f),
@@ -173,6 +174,76 @@ void GraphicsEngine::initiateEntities()
 					Vec3D(0.f, 1.f, 0.f),
 					Vec3D(1.f, 1.f, 0.f),
 					sf::Color(90, 90, 90)));
+	// Cube2
+	entities.push_back(new Plane(
+					Vec3D(2.f, 2.f, 2.f),
+					Vec3D(2.f, 3.f, 2.f),
+					Vec3D(2.f, 2.f, 3.f),
+					sf::Color(220, 220, 220)));
+	entities.push_back(new Plane(
+					Vec3D(2.f, 3.f, 2.f),
+					Vec3D(2.f, 2.f, 3.f),
+					Vec3D(2.f, 3.f, 3.f),
+					sf::Color(220, 220, 220)));
+	// 223, 323
+	// 233 ,333
+	entities.push_back(new Plane(
+					Vec3D(2.f, 2.f, 3.f),
+					Vec3D(3.f, 2.f, 3.f),
+					Vec3D(3.f, 3.f, 3.f),
+					sf::Color(240, 240, 240)));
+	entities.push_back(new Plane(
+					Vec3D(2.f, 2.f, 3.f),
+					Vec3D(2.f, 3.f, 3.f),
+					Vec3D(3.f, 3.f, 3.f),
+					sf::Color(240, 240, 240)));
+	entities.push_back(new Plane(
+					Vec3D(3.f, 2.f, 2.f),
+					Vec3D(3.f, 2.f, 3.f),
+					Vec3D(3.f, 3.f, 3.f),
+					sf::Color(140, 140, 140)));
+	entities.push_back(new Plane(
+					Vec3D(3.f, 2.f, 2.f),
+					Vec3D(3.f, 3.f, 2.f),
+					Vec3D(3.f, 3.f, 3.f),
+					sf::Color(140, 140, 140)));
+	// 323, 223
+	// 322 222
+	entities.push_back(new Plane(
+					Vec3D(2.f, 2.f, 2.f),
+					Vec3D(2.f, 2.f, 3.f),
+					Vec3D(3.f, 2.f, 2.f),
+					sf::Color(110, 110, 110)));
+	entities.push_back(new Plane(
+					Vec3D(3.f, 2.f, 3.f),
+					Vec3D(2.f, 2.f, 3.f),
+					Vec3D(3.f, 2.f, 2.f),
+					sf::Color(110, 110, 110)));
+	// 333, 233
+	// 332 232
+	entities.push_back(new Plane(
+					Vec3D(2.f, 3.f, 2.f),
+					Vec3D(3.f, 3.f, 3.f),
+					Vec3D(3.f, 3.f, 2.f),
+					sf::Color(170, 170, 170)));
+	entities.push_back(new Plane(
+					Vec3D(3.f, 3.f, 3.f),
+					Vec3D(2.f, 3.f, 3.f),
+					Vec3D(2.f, 3.f, 2.f),
+					sf::Color(170, 170, 170)));
+	
+	// 222, 322
+	// 232 ,332
+	entities.push_back(new Plane(
+					Vec3D(2.f, 2.f, 2.f),
+					Vec3D(3.f, 2.f, 2.f),
+					Vec3D(2.f, 3.f, 2.f),
+					sf::Color(210, 210, 210)));
+	entities.push_back(new Plane(
+					Vec3D(3.f, 2.f, 2.f),
+					Vec3D(2.f, 3.f, 2.f),
+					Vec3D(3.f, 3.f, 2.f),
+					sf::Color(210, 210, 210)));
 }
 
 const Cam& GraphicsEngine::getActiveCam()
