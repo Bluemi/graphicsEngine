@@ -1,6 +1,7 @@
 #include "Plane.hpp"
 
 #include "../../misc/Debug.hpp"
+#include "../../misc/Converter.hpp"
 #include "../../math/Point2D.hpp"
 #include "../../core/Main.hpp"
 
@@ -32,6 +33,11 @@ Vec3D Plane::getPosition() const
 	return Vec3D(	(point1.getX() + point2.getX() + point3.getX())/3.f,
 			(point1.getY() + point2.getY() + point3.getY())/3.f,
 			(point1.getZ() + point2.getZ() + point3.getZ())/3.f);
+}
+
+std::string Plane::toString() const
+{
+	return "[distanceToCam=" + Converter::floatToString(getDistanceToCam()) + ", p1=" + point1.toString() + ", p2=" + point2.toString() + ", p3=" + point3.toString() + "]";
 }
 
 void Plane::setPosition(const Vec3D&)

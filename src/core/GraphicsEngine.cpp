@@ -74,7 +74,7 @@ void GraphicsEngine::render()
 	std::sort(entities.begin(), entities.end(), distanceComp);
 
 /*
-	Debug::test("\nPostSort");
+	Debug::test("\nPostSort:");
 
 	for (Entity* e : entities)
 	{
@@ -106,14 +106,26 @@ void GraphicsEngine::initiateEntities()
 {
 	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 0.f),
+					Vec3D(0.f, 1.f, 0.f),
+					Vec3D(0.f, 0.f, 1.f),
+					sf::Color(100, 100, 100)));
+	entities.push_back(new Plane(
+					Vec3D(0.f, 1.f, 0.f),
 					Vec3D(0.f, 0.f, 1.f),
 					Vec3D(0.f, 1.f, 1.f),
 					sf::Color(100, 100, 100)));
+	// 001, 101
+	// 011 ,111
 	entities.push_back(new Plane(
-					Vec3D(0.f, 0.f, 0.f),
-					Vec3D(0.f, 1.f, 0.f),
+					Vec3D(0.f, 0.f, 1.f),
+					Vec3D(1.f, 0.f, 1.f),
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(130, 130, 130)));
+	entities.push_back(new Plane(
+					Vec3D(0.f, 0.f, 1.f),
 					Vec3D(0.f, 1.f, 1.f),
-					sf::Color(100, 100, 100)));
+					Vec3D(1.f, 1.f, 1.f),
+					sf::Color(130, 130, 130)));
 	entities.push_back(new Plane(
 					Vec3D(1.f, 0.f, 0.f),
 					Vec3D(1.f, 0.f, 1.f),
@@ -124,16 +136,43 @@ void GraphicsEngine::initiateEntities()
 					Vec3D(1.f, 1.f, 0.f),
 					Vec3D(1.f, 1.f, 1.f),
 					sf::Color(200, 200, 200)));
+	// 101, 001
+	// 100 000
 	entities.push_back(new Plane(
+					Vec3D(0.f, 0.f, 0.f),
 					Vec3D(0.f, 0.f, 1.f),
+					Vec3D(1.f, 0.f, 0.f),
+					sf::Color(180, 180, 180)));
+	entities.push_back(new Plane(
 					Vec3D(1.f, 0.f, 1.f),
-					Vec3D(1.f, 1.f, 1.f),
-					sf::Color(130, 130, 130)));
-	entities.push_back(new Plane(
 					Vec3D(0.f, 0.f, 1.f),
-					Vec3D(0.f, 1.f, 1.f),
+					Vec3D(1.f, 0.f, 0.f),
+					sf::Color(180, 180, 180)));
+	// 111, 011
+	// 110 010
+	entities.push_back(new Plane(
+					Vec3D(0.f, 1.f, 0.f),
 					Vec3D(1.f, 1.f, 1.f),
-					sf::Color(130, 130, 130)));
+					Vec3D(1.f, 1.f, 0.f),
+					sf::Color(110, 110, 110)));
+	entities.push_back(new Plane(
+					Vec3D(1.f, 1.f, 1.f),
+					Vec3D(0.f, 1.f, 1.f),
+					Vec3D(0.f, 1.f, 0.f),
+					sf::Color(110, 110, 110)));
+	
+	// 000, 100
+	// 010 ,110
+	entities.push_back(new Plane(
+					Vec3D(0.f, 0.f, 0.f),
+					Vec3D(1.f, 0.f, 0.f),
+					Vec3D(0.f, 1.f, 0.f),
+					sf::Color(90, 90, 90)));
+	entities.push_back(new Plane(
+					Vec3D(1.f, 0.f, 0.f),
+					Vec3D(0.f, 1.f, 0.f),
+					Vec3D(1.f, 1.f, 0.f),
+					sf::Color(90, 90, 90)));
 }
 
 const Cam& GraphicsEngine::getActiveCam()

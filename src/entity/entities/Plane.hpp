@@ -14,6 +14,7 @@ class Plane : public Entity
 		void render(const Cam& cam) const override;
 		Vec3D getPosition() const override;
 		void setPosition(const Vec3D&) override;
+		virtual std::string toString() const override;
 	private:
 		Vec3D point1;
 		Vec3D point2;

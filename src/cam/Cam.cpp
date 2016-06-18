@@ -5,8 +5,8 @@
 
 const float Cam::DEFAULT_ROTATION_SPEED = 0.001f;
 const float Cam::DEFAULT_VIEW_RANGE_X = 0.52f;
-const float Cam::DEFAULT_DRAG = 0.98f;
-const float Cam::DEFAULT_ACCELERATION = 0.2f;
+const float Cam::DEFAULT_DRAG = 0.9f;
+const float Cam::DEFAULT_ACCELERATION = 0.1f;
 const float Cam::FAST_ACCELERATION = 0.4f;
 
 Cam::Cam(const Vec3D& pos)
